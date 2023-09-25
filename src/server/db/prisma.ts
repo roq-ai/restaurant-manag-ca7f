@@ -24,7 +24,7 @@ const extendedPrismaClient = () => {
       },
     ],
   });
-return prisma;
+  return prisma;
   const extendedPrisma = prisma.$extends({
     model: {
       $allModels: {
