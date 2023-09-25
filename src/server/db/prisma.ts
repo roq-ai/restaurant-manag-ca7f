@@ -5,9 +5,26 @@ import { authorizationClient } from 'server/roq/roq-client';
 // https://echobind.com/post/extending-types-for-prisma-extensions-in-nextjs
 const extendedPrismaClient = () => {
   const prisma = new PrismaClient({
-    log: ['query'],
+    log: [
+      {
+        emit: 'stdout',
+        level: 'query',
+      },
+      {
+        emit: 'stdout',
+        level: 'error',
+      },
+      {
+        emit: 'stdout',
+        level: 'info',
+      },
+      {
+        emit: 'stdout',
+        level: 'warn',
+      },
+    ],
   });
-
+return prisma;
   const extendedPrisma = prisma.$extends({
     model: {
       $allModels: {
